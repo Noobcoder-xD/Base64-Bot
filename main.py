@@ -15,7 +15,7 @@ print("""
 """)
 
 from dotenv import load_dotenv
-from pyrogram import Client, filters
+from pyrogram import Client, filters, __version__
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
 if os.path.exists(".env"):
