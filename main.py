@@ -9,9 +9,9 @@ import base64
 import urllib.parse
 
 print("""
-     --------------------------
-             starting...
-     --------------------------
+     --------------------------------
+             ...starting...
+     --------------------------------
 """)
 
 from dotenv import load_dotenv
@@ -166,8 +166,10 @@ if __name__ == "__main__:
     try:
        RiZoeL.start()
        print(f"""
-       ------------------------------
-         YOUR BOT HAS BEEN STARTED!
-         PYROGRAM VERSION: {__version__}
-       ------------------------------
-       """
+     --------------------------------
+        YOUR BOT HAS BEEN STARTED!
+        PYROGRAM VERSION: {__version__}
+     --------------------------------
+       """)
+    except Exception as eror:
+       print(str(eror))
