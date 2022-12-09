@@ -162,7 +162,7 @@ async def help_(_, message: Message):
     await message.reply(help_text)
 
 
-if __name__ == "__main__:
+if __name__ == "__main__":
     try:
        RiZoeL.start()
        print(f"""
