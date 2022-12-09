@@ -9,7 +9,7 @@
 - `git clone https://github.com/MrRizoel/Coder-Bot`
 - `cd Coder-Bot` 
 - `pip3 install -r requirements.txt`
-  Rename example.env as env and fill variables!
+  Rename `example.env` as `.env` and fill variables!
 - `python3 main.py`
 
 ----
