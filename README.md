@@ -1,4 +1,4 @@
-<h1 align="centre") Coder-Bot! </h1>
+<h1 align="centre"> Coder-Bot! </h1>
 
 <b> Info </b>: Encode/Decode telegram bot! || Pyrogram based
 
