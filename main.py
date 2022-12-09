@@ -163,4 +163,11 @@ async def help_(_, message: Message):
 
 
 if __name__ == "__main__:
-    RiZoeL.start()
+    try:
+       RiZoeL.start()
+       print(f"""
+       ------------------------------
+         YOUR BOT HAS BEEN STARTED!
+         PYROGRAM VERSION: {__version__}
+       ------------------------------
+       """
