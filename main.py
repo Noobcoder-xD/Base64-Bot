@@ -15,8 +15,10 @@ print("""
 """)
 
 from dotenv import load_dotenv
-from pyrogram import Client, filters, __version__
+from pyrogram import Client, filters, __version__, idle
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.errors import ApiIdInvalid, ApiIdPublishedFlood, AccessTokenInvalid
+
 
 if os.path.exists(".env"):
     load_dotenv(".env")
@@ -96,7 +98,7 @@ Decode: `{decode}`
        except Exception as error:
           await message.reply(f"oops error! {error}")
           return
-    await RiZoeL.send_message(message.chat.id, final_text, reply_markup=InlineKeyboardMarkup(source_code_button))
+    await RiZoeL.send_message(message.chat.id, final_text, disable_web_page_preview=True)
 
 
 @RiZoeL.on_message(_filter("start"))
@@ -163,13 +165,19 @@ async def help_(_, message: Message):
 
 
 if __name__ == "__main__":
+    print("Bot - [INFO]: Starting the bot")
     try:
-       RiZoeL.start()
-       print(f"""
+        RiZoeL.start()
+    except (ApiIdInvalid, ApiIdPublishedFlood):
+        raise Exception("Your API_ID/API_HASH is not valid.")
+    except AccessTokenInvalid:
+        raise Exception("Your TOKEN is not valid.")
+    print(f"""
      --------------------------------
-        YOUR BOT HAS BEEN STARTED!
-        PYROGRAM VERSION: {__version__}
+       YOUR BOT HAS BEEN STARTED!
+       PYROGRAM VERSION: {__version__}
      --------------------------------
        """)
-    except Exception as eror:
-       print(str(eror))
+    idle()
+    RiZoeL.stop()
+    print("Bot - [INFO]: Bot stopped.")
