@@ -56,9 +56,9 @@ def _filter(cmd: str):
    return filters.private & filters.incoming & filters.command(cmd)
 
 async def coder_(RiZoeL, message, type):
-    args = ("".join(message.text.split(maxsplit=1)[1:])).split(" ", 1)
-    if args:
-       code = args[0]
+    txt = ' '.join(message.command[1:])
+    if txt:
+       code = str(txt)
     else:
        await message.reply_text("Gime code text!")
        return
