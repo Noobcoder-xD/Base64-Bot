@@ -76,8 +76,7 @@ New url: `{new_link}`
           return
     elif type == "encode":
        try:
-          en = base64.b64encode(code)
-          encode = en.encode()
+          encode = base64.b64encode(code.encode())
           final_text = f"""
 **Encoded ✓**
 
@@ -88,8 +87,7 @@ Encode: {encode}
           return
     elif type == "decode":
        try:
-          de = base64.b64decode(code)
-          decode = de.encode()
+          decode = base64.b64decode(code.encode())
           final_text = f"""
 **Decoded ✓**
 
