@@ -66,38 +66,34 @@ async def coder_(RiZoeL, message, type):
     if type == "url":
        try:
           new_link = urllib.parse.quote_plus(code)
-          google_url =  "https://www.google.com/url?q=" + new_link
           final_text = f"""
 **Your URL Encoded**
 
 New url: `{new_link}`
-Google test: [Click Here.]({google_url})
 """
        except Exception as error:
           await message.reply(f"oops error! {error}")
           return
     elif type == "encode":
        try:
-          en = base64.b64encode(code.encode())
-          en2 = en.split("b")[1]
-          encode = en2.replace("'", "")
+          en = base64.b64encode(code)
+          encode = en.encode()
           final_text = f"""
 **Encoded ✓**
 
-Encode: `{encode}`
+Encode: {encode}
 """
        except Exception as error:
           await message.reply(f"oops error! {error}")
           return
     elif type == "decode":
        try:
-          de = base64.b64decode(code.encode())
-          de2 = de.split("b")[1]
-          decode = de2.replace("'", "")
+          de = base64.b64decode(code)
+          decode = de.encode()
           final_text = f"""
 **Decoded ✓**
 
-Decode: `{decode}`
+Decode: {decode}
 """
        except Exception as error:
           await message.reply(f"oops error! {error}")
