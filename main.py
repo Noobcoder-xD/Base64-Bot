@@ -78,7 +78,7 @@ Google test: [Click Here.](google_url)
           return
     elif type == "encode":
        try:
-          encode = base64.b64encode(code)
+          encode = base64.b64encode(code.encode())
           final_text = f"""
 **Encoded ✓**
 
@@ -89,7 +89,7 @@ Encode: `{encode}`
           return
     elif type == "decode":
        try:
-          decode = base64.b64decode(code)
+          decode = base64.b64decode(code.encode())
           final_text = f"""
 **Decoded ✓**
 
