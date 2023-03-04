@@ -1,0 +1,37 @@
+{
+      "name": "Coder-Bot",
+      "description": "A Pyrogram Based bot",
+      "logo": "https://telegra.ph/file/ec832fc9107fd21edfee3.jpg",
+      "keywords": [
+        "telegram",
+        "PYROGRAM",
+        "telegram-bot",
+        "RiZoeLX",
+        "Coder"
+      ],   
+  "repository": "https://github.com/MrRizoel/Coder-Bot",
+  "website": "https://github.com/RiZoeLX",
+  "success_url": "https://t.me/RiZoeLX",
+  "env": {
+      "API_ID": {
+        "description": "Fill Api ID Take this value from My.telegram.org",
+        "value": "",
+        "required": true
+      },
+      "API_HASH": {
+        "description": "Fill Api hash Take this value from My.telegram.org",
+        "value": "",
+        "required": true
+      },
+      "BOT_TOKEN": {
+        "description": "Bot Token",
+        "value": "",
+        "required": true
+      }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
