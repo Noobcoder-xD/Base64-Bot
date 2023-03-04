@@ -58,7 +58,7 @@ def _filter(cmd: str):
 async def coder_(RiZoeL, message, type):
     args = ("".join(message.text.split(maxsplit=1)[1:])).split(" ", 1)
     if args:
-       code = str(args[0])
+       code = args[0]
     else:
        await message.reply_text("Gime code text!")
        return
@@ -66,7 +66,7 @@ async def coder_(RiZoeL, message, type):
     if type == "url":
        try:
           new_link = urllib.parse.quote_plus(code)
-          google_url =  "https://www.google.com/url?q=" + url
+          google_url =  "https://www.google.com/url?q=" + new_link
           final_text = f"""
 **Your URL Encoded**
 
@@ -122,23 +122,6 @@ async def url_(_, message: Message):
     print(f"Bot - [INFO]: {message.from_user.first_name} encode url!")
     return
 
-@RiZoeL.on_message(filters.private & filters.web_page)
-async def direct_(_, message: Message):
-    try:
-       new_link = urllib.parse.quote_plus(code)
-       google_url =  "https://www.google.com/url?q=" + url
-       final_text = f"""
-**Your URL Encoded**
-
-New url: `{new_link}`
-Google test: [Click Here.](google_url)
-"""
-    except Exception as error:
-       await message.reply(f"oops error! {error}")
-       return
-    await message.reply(final_text)
-    print(f"Bot - [INFO]: {message.from_user.first_name} encode url!")
-    
 @RiZoeL.on_message(_filter(["en", "encode"]))
 async def encode_(_, message: Message):
     await coder_(RiZoeL, message, "encode")
@@ -159,7 +142,7 @@ async def help_(_, message: Message):
 • /ping - to check ping/speed.
 • /url (url) - to encode url.
 • /encode (text) - to encode text.
-• /encode (text? - to decide text.
+• /decode (text) - to decide text.
 """
     await message.reply(help_text)
 
