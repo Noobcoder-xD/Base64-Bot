@@ -7,6 +7,8 @@ import pip
 import asyncio
 import base64
 import urllib.parse
+import time
+import datetime 
 
 print("""
      --------------------------------
@@ -49,7 +51,7 @@ print("Bot - [INFO]: Got Client!")
 """ Functions """
 
 source_code_button = [[
-                     InlineKeyboardButton("• Source Code •", url="https://github.com/MrRizoel/Coder-Bot"),
+                     InlineKeyboardButton("• Developer •", url="https://t.me/TheRiZoeL"),
                      ], ]
 
 def _filter(cmd: str):
