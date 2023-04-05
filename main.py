@@ -57,6 +57,20 @@ source_code_button = [[
 def _filter(cmd: str):
    return filters.private & filters.incoming & filters.command(cmd)
 
+
+async def encode(string):
+    string_bytes = string.encode("ascii")
+    base64_bytes = base64.urlsafe_b64encode(string_bytes)
+    base64_string = (base64_bytes.decode("ascii")).strip("=")
+    return base64_string
+
+async def decode(base64_string):
+    base64_string = base64_string.strip("=") # links generated before this commit will be having = sign, hence striping them to handle padding errors.
+    base64_bytes = (base64_string + "=" * (-len(base64_string) % 4)).encode("ascii")
+    string_bytes = base64.urlsafe_b64decode(base64_bytes) 
+    string = string_bytes.decode("ascii")
+    return string
+
 async def coder_(RiZoeL, message, type):
     txt = ' '.join(message.command[1:])
     if txt:
@@ -78,7 +92,7 @@ New url: `{new_link}`
           return
     elif type == "encode":
        try:
-          encode = base64.b64encode(code.encode())
+          encode = encode(code)
           final_text = f"""
 **Encoded ✓**
 
@@ -89,7 +103,7 @@ Encode: {encode}
           return
     elif type == "decode":
        try:
-          decode = base64.b64decode(code.encode())
+          decode = decode(code)
           final_text = f"""
 **Decoded ✓**
 
