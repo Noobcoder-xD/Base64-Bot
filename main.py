@@ -55,7 +55,7 @@ source_code_button = [[
                      ], ]
 
 def _filter(cmd: str):
-   return filters.private & filters.incoming & filters.command(cmd)
+   return filters.command(cmd)
 
 
 async def B64encode(string):
