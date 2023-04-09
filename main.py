@@ -92,7 +92,7 @@ async def coder_(RiZoeL, message, type):
           return
     elif type == "encode":
        try:
-          encode = encode(code)
+          encode = await encode(code)
           final_text = f"""
 **Encoded ✓**
 
@@ -103,7 +103,7 @@ Encode: `{encode}=`
           return
     elif type == "decode":
        try:
-          decode = decode(code)
+          decode = await decode(code)
           final_text = f"""
 **Decoded ✓**
 
