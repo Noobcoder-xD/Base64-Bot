@@ -61,12 +61,12 @@ def _filter(cmd: str):
 async def encode(string):
     string_bytes = string.encode("ascii")
     base64_bytes = base64.urlsafe_b64encode(string_bytes)
-    base64_string = base64_bytes.decode("ascii")
+    base64_string = (base64_bytes.decode("ascii")).strip("=")
     return base64_string
 
 async def decode(base64_string):
-    #base64_string = base64_string.strip("=") # links generated before this commit will be having = sign, hence striping them to handle padding errors.
-    base64_bytes = base64_string.encode("ascii")
+    base64_string = base64_string.strip("=") # links generated before this commit will be having = sign, hence striping them to handle padding errors.
+    base64_bytes = (base64_string + "=" * (-len(base64_string) % 4)).encode("ascii")
     string_bytes = base64.urlsafe_b64decode(base64_bytes) 
     string = string_bytes.decode("ascii")
     return string
@@ -85,7 +85,7 @@ async def coder_(RiZoeL, message, type):
           final_text = f"""
 **Your URL Encoded**
 
-New url: `{new_link}`
+**New url:** `{new_link}`
 """
        except Exception as error:
           await message.reply(f"oops error! {error}")
@@ -96,7 +96,7 @@ New url: `{new_link}`
           final_text = f"""
 **Encoded ✓**
 
-Encode: {encode}
+Encode: `{encode}=`
 """
        except Exception as error:
           await message.reply(f"oops error! {error}")
@@ -107,7 +107,7 @@ Encode: {encode}
           final_text = f"""
 **Decoded ✓**
 
-Decode: {decode}
+Decode: `{decode}`
 """
        except Exception as error:
           await message.reply(f"oops error! {error}")
