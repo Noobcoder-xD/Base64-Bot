@@ -1,4 +1,4 @@
-# RiZoeL 2022 © Coder-Bot 
+# RiZoeL 2022 © Base64-Bot 
 
 """ Imports """
 import os
@@ -50,9 +50,16 @@ print("Bot - [INFO]: Got Client!")
 
 """ Functions """
 
-source_code_button = [[
-                     InlineKeyboardButton("• Developer •", url="https://t.me/TheRiZoeL"),
-                     ], ]
+source_code_button = [
+     [
+          InlineKeyboardButton(
+               "Repo", url="https://github.com/MrRizoel/Base64-Bot"
+          ),
+          InlineKeyboardButton(
+               "Powered by", url="https://t.me/BeatlesCommunity"
+          )
+     ],
+]
 
 def _filter(cmd: str):
    return filters.command(cmd)
